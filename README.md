@@ -1,10 +1,10 @@
-AIM :
-To Perform linear Block code operation for the given input
-
-TOOLS REQUIRED :
-Python IDE with Numpy and Scipy
-
-PROGRAM:
+# Linear-Block-Code
+## Aim:
+To perform linear block code operation for the given input.
+## Tools Required:
+python IDE with Numpy and Scipy
+## Program:
+```
 import numpy as np
 pb = [] # Parity matrix
 Ik = [] # I_K Matrix
@@ -40,28 +40,28 @@ d_min = np.min(np.sum(c[1:], axis=1))
 h = p_mat[:, :3]
 hp = np.hstack((np.eye(n-k, dtype=int), h.T))
 ht = hp.T
-print('')
+print('****')
 print('The Generator Matrix is: ')
 #for r in p_mat: 
-#    print(" ".join(map(str, r)))
+#    print(" ".join(map(str, r)))
 #for r in Ik: 
-#    print(" ".join(map(str, r)))
+#    print(" ".join(map(str, r)))
 for r in g_mat: 
   print(" ".join(map(str, r)))
-print('')
-print(f'Message Bits  Codeword   Hamming Weight')
+print('****')
+print(f'Message Bits  Codeword   Hamming Weight')
 code_word = np.hstack((m, c, h_mat.T))
 for r in range(code_word.shape[0]):
   format_row = " ".join(map(str, code_word[r, :k])) + '\t' + " ".join(map(str, code_word[r, k:n+k])) + '\t' + str(code_word[r, -1])
   print(format_row)
-print('')
+print('****')
 print(f'Minimum Hamming distance : {d_min}')
 # Parity Check matrix
-print('')
+print('****')
 print(f'Parity Check Matrix')
 for r in hp:
   print(" ".join(map(str, r)))
-print('')
+print('****')
 print(f'Parity Check Matrix Transpose')
 for r in ht:
   print(" ".join(map(str, r)))
@@ -72,13 +72,13 @@ r_c = np.array(r_code)
 #Syndrome Calculation
 e = np.mod(np.dot(r_c, ht), 2)
 
-#print('')
+#print('****')
 #print(f'Received codeword Matrix')
 #for r in r_c:
-#    print(" ".join(map(str, r)))
-print('')
+#    print(" ".join(map(str, r)))
+print('****')
 print(f"Syndeome of given received codeword is : " + " ".join(map(str, e[0])))
-print('')
+print('****')
 print(f'Syndrome Matrix')
 for i in range(n):
   combined_row = np.concatenate((ht[i, :], np.eye(n, dtype=int)[i,:]))
@@ -92,8 +92,11 @@ print(f"The error postion is : " + " ".join(map(str, err)))
 # Correct the error in the received codeword
 add = err + rc
 print(f"The correct codeword is : " + " " .join(map(str,add)))
-OUTPUT:
-image image
+```
+## Output:
+![image](https://github.com/user-attachments/assets/56dcb2d9-d212-4124-9410-a61c4988ec15)
+![image](https://github.com/user-attachments/assets/274e1984-c869-40a3-a268-abc33c663285)
 
-RESULTS:
-Thus,Linear Block Code for the Given input is successfully verified
+## Results:
+Thus linear block code operation for the given input is successfully verified.
+
